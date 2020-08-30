@@ -2,16 +2,18 @@ import javax.swing.JFrame;
 
 public class LeagueInvaders {
 	JFrame frame;
+	gamePanel tyler;
 	public static final int WIDTH=500;
 	public static final int HEIGHT = 800;
 	public static void main(String[] args) {
-	LeagueInvaders=new LeagueInvaders();	
-	
+	LeagueInvaders leagueInvaders = new LeagueInvaders();	
+	leagueInvaders.setup();
 }
 	 LeagueInvaders() {
 		 frame = new JFrame();
 		 frame.setVisible(true);
-		 
+		 tyler = new gamePanel();
+		 frame.add(tyler);
 	 }
 		
 	 void setup() {
