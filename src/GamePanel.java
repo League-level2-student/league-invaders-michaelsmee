@@ -16,6 +16,8 @@ Font gameFont;
 Font gameInstructions;
 Timer frameDraw;
 GamePanel (){
+	frameDraw = new Timer(1000/60, this);
+	frameDraw.start();
 	
 titleFont =  new Font("Arial", Font.PLAIN, 48);
 gameFont =  new Font("Arial", Font.PLAIN, 48);
@@ -52,7 +54,17 @@ public void paintComponent (Graphics g) {
 @Override
 public void actionPerformed(ActionEvent e) {
 	// TODO Auto-generated method stub
-	
+	if(currentState == MENU) {
+		updateMenuState();
+	}
+	else if(currentState == GAME) {
+		updateGameState();
+	}
+	else if(currentState == END) {
+		updateEndState();
+	}
+	System.out.println("action");
+	repaint(){}
 }
 
 
