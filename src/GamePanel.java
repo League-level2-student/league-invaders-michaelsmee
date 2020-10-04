@@ -3,12 +3,15 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class GamePanel extends JPanel implements ActionListener{ 
+public class GamePanel extends JPanel implements ActionListener, KeyListener{ 
 final int MENU = 0;
+Rocketship rocketship = new Rocketship(250, 750 , 50, 50);
 final int GAME = 1;
 final int END = 2;
 Font titleFont;
@@ -32,14 +35,28 @@ void updateEndState() {}
 void drawMenuState(Graphics g) {
 	g.setColor(Color.BLUE);
 	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
-	g.setColor(Color.BLACK);
+	g.setColor(Color.YELLOW);
 	g.setFont(titleFont);
 	g.drawString("Welcome", 150, 250);
 	g.drawString("Press Enter to start", 20, 300);
-	g.drawString("Press space for instructions", 20, 500);
+	g.drawString("Press space for info", 20, 500);
 }
-void drawGameState(Graphics g) {}
-void drawEndState(Graphics g) {}
+void drawGameState(Graphics g) {
+	g.setColor(Color.BLACK);
+	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+	g.setColor(Color.YELLOW);
+	rocketship.draw(g);
+	
+}
+void drawEndState(Graphics g) {
+	g.setColor(Color.RED);
+	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+	g.setColor(Color.YELLOW);
+	g.setFont(titleFont);
+	g.drawString("Game Over", 150, 250);
+	g.drawString("You kill  many enimies", 20, 300);
+	g.drawString("Press space for info", 20, 500);
+}
 @Override	
 public void paintComponent (Graphics g) {
 	if(currentState == MENU){
@@ -64,7 +81,40 @@ public void actionPerformed(ActionEvent e) {
 		updateEndState();
 	}
 	System.out.println("action");
-	repaint(){}
+	repaint();
+}
+@Override
+public void keyPressed(KeyEvent arg0) {
+	// TODO Auto-generated method stub
+	if(arg0.getKeyCode()==KeyEvent.VK_ENTER) {
+		if(currentState == END) {
+			currentState = MENU;}
+		else {
+			currentState++;
+		}
+	}
+	if(arg0.getKeyCode()==KeyEvent.VK_UP) {
+		System.out.println("UP");
+	}
+	if(arg0.getKeyCode()==KeyEvent.VK_LEFT) {
+		System.out.println("LEFT");
+	}
+	if(arg0.getKeyCode()==KeyEvent.VK_RIGHT) {
+		System.out.println("RIGHT");
+	}
+	if(arg0.getKeyCode()==KeyEvent.VK_DOWN) {
+		System.out.println("DOWN");
+	}
+}
+@Override
+public void keyReleased(KeyEvent arg0) {
+	// TODO Auto-generated method stub
+	
+}
+@Override
+public void keyTyped(KeyEvent arg0) {
+	// TODO Auto-generated method stub
+	
 }
 
 

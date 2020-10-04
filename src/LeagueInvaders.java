@@ -1,8 +1,10 @@
+import java.awt.Graphics;
+
 import javax.swing.JFrame;
 
 public class LeagueInvaders {
 	JFrame frame;
-	GamePanel tyler;
+	GamePanel panel;
 	public static final int WIDTH = 500;
 	public static final int HEIGHT = 800;
 
@@ -14,8 +16,9 @@ public class LeagueInvaders {
 	LeagueInvaders() {
 		frame = new JFrame();
 		frame.setVisible(true);
-		tyler = new GamePanel();
-		frame.add(tyler);
+		panel = new GamePanel();
+		frame.add(panel);
+		frame.addKeyListener(panel);
 	}
 
 	void setup() {
