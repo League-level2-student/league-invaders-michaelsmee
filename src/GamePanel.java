@@ -113,7 +113,7 @@ public void keyPressed(KeyEvent arg0) {
 		rocketship.x=450;
 	}
 	if(rocketship.x<0) {
-		rocketship.x=0;
+		rocketship.x=0; 
 	}
 	if(rocketship.y>750) {
 		rocketship.y=750;
