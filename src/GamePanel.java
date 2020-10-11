@@ -11,7 +11,7 @@ import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener{ 
 final int MENU = 0;
-Rocketship rocketship = new Rocketship(250, 750 , 50, 50);
+Rocketship rocketship = new Rocketship(250, 750 , 50, 50, 10, true);
 final int GAME = 1;
 final int END = 2;
 Font titleFont;
@@ -44,8 +44,8 @@ void drawMenuState(Graphics g) {
 void drawGameState(Graphics g) {
 	g.setColor(Color.BLACK);
 	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
-	g.setColor(Color.YELLOW);
 	rocketship.draw(g);
+	//System.out.println("Rocket");
 	
 }
 void drawEndState(Graphics g) {
@@ -80,7 +80,7 @@ public void actionPerformed(ActionEvent e) {
 	else if(currentState == END) {
 		updateEndState();
 	}
-	System.out.println("action");
+	//System.out.println("action");
 	repaint();
 }
 @Override
@@ -95,15 +95,31 @@ public void keyPressed(KeyEvent arg0) {
 	}
 	if(arg0.getKeyCode()==KeyEvent.VK_UP) {
 		System.out.println("UP");
+		rocketship.up();
 	}
 	if(arg0.getKeyCode()==KeyEvent.VK_LEFT) {
 		System.out.println("LEFT");
+		rocketship.left();
 	}
 	if(arg0.getKeyCode()==KeyEvent.VK_RIGHT) {
 		System.out.println("RIGHT");
+		rocketship.right();
 	}
 	if(arg0.getKeyCode()==KeyEvent.VK_DOWN) {
 		System.out.println("DOWN");
+		rocketship.down();
+	}
+	if(rocketship.x>450) {
+		rocketship.x=450;
+	}
+	if(rocketship.x<0) {
+		rocketship.x=0;
+	}
+	if(rocketship.y>750) {
+		rocketship.y=750;
+	}
+	if(rocketship.y<0) {
+		rocketship.y=800;
 	}
 }
 @Override
