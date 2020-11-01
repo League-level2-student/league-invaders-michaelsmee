@@ -8,7 +8,7 @@ public class GameObject {
 	int speed=10;
 	boolean active=true;
 	
-	GameObject(int x, int y, int width, int height, int speed, boolean active) {
+	GameObject(int x, int y, int width, int height) {
 		this.x = x;
 		this.y = y;
 		this.width = width;
