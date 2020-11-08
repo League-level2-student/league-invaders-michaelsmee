@@ -11,9 +11,10 @@ import javax.swing.Timer;
 
 public class GamePanel extends JPanel implements ActionListener, KeyListener{ 
 final int MENU = 0;
-Rocketship rocketship = new Rocketship(250, 750 , 50, 50, 10, true);
+Rocketship rocketship = new Rocketship(250, 750 , 50, 50);
 final int GAME = 1;
 final int END = 2;
+ObjectManager objectManager= new ObjectManager(rocketship);
 Font titleFont;
 Font gameFont;
 Font gameInstructions;
@@ -25,12 +26,13 @@ GamePanel (){
 titleFont =  new Font("Arial", Font.PLAIN, 48);
 gameFont =  new Font("Arial", Font.PLAIN, 48);
 gameInstructions =  new Font("Arial", Font.PLAIN, 48);
-
-
+ 
 }
 int currentState = MENU;
 void updateMenuState() {}
-void updateGameState() {}
+void updateGameState() {
+	objectManager.update();
+}
 void updateEndState() {}
 void drawMenuState(Graphics g) {
 	g.setColor(Color.BLUE);
@@ -44,7 +46,7 @@ void drawMenuState(Graphics g) {
 void drawGameState(Graphics g) {
 	g.setColor(Color.BLACK);
 	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
-	rocketship.draw(g);
+	objectManager.draw(g);
 	//System.out.println("Rocket");
 	
 }

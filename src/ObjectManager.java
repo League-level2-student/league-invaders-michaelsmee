@@ -7,6 +7,7 @@ Rocketship rocket;
 Projectile projectile;
 Random rand = new Random();
 ArrayList<Alien> aliens = new ArrayList<Alien>();
+
 ObjectManager(Rocketship rocket){
 	this.rocket=rocket;
 }
