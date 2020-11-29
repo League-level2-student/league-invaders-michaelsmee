@@ -14,9 +14,9 @@ public class Alien extends GameObject {
 	this.speed =1;
 	if (needImage) {
 	    loadImage ("rocket.png");
-	}
-	}
-
+	} 
+	}    
+  
 
 void update() {
 	y+=1;

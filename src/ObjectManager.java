@@ -6,7 +6,7 @@ import java.util.Random;
 
 public class ObjectManager implements ActionListener{
 Rocketship rocket;
-Projectile projectile;
+Projectile projectile; 
 Random rand = new Random();
 ArrayList<Alien> aliens = new ArrayList<Alien>();
 

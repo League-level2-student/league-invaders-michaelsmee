@@ -13,7 +13,7 @@ public class Rocketship extends GameObject{
 	public static boolean gotImage1 = false;	
 	Rocketship(int x, int y, int width, int height) {
 		super(x, y, width, height);
-		// TODO Auto-generated constructor stub
+		// TODO Auto-generated constructor stub 
 		if (needImage) {
 		    loadImage ("rocket.png");
 		}
