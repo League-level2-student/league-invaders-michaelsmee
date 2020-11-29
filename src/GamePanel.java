@@ -11,7 +11,7 @@ import javax.imageio.ImageIO;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
-public class GamePanel extends JPanel implements ActionListener, KeyListener{ 
+public class GamePanel extends JPanel implements ActionListener, KeyListener { 
 	public static BufferedImage image;
 	public static boolean needImage = true;
 	public static boolean gotImage = false;	
@@ -27,6 +27,9 @@ Timer frameDraw;
 GamePanel (){
 	frameDraw = new Timer(1000/60, this);
 	frameDraw.start();
+	if (needImage) {
+	    loadImage ("space.png");
+	}
 	
 titleFont =  new Font("Arial", Font.PLAIN, 48);
 gameFont =  new Font("Arial", Font.PLAIN, 48);
@@ -49,11 +52,15 @@ void drawMenuState(Graphics g) {
 	g.drawString("Press space for info", 20, 500);
 }
 void drawGameState(Graphics g) {
-	g.setColor(Color.BLACK);
+	if (gotImage) {
+		g.drawImage(image, WIDTH, HEIGHT, null);
+	} else {
+		g.setColor(Color.BLACK);
+		g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
+	}
 	
-	
-	g.fillRect(0, 0, LeagueInvaders.WIDTH, LeagueInvaders.HEIGHT);
 	objectManager.draw(g);
+	
 	//System.out.println("Rocket");
 	
 }
