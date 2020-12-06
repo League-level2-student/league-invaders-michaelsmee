@@ -24,6 +24,7 @@ Font titleFont;
 Font gameFont;
 Font gameInstructions;
 Timer frameDraw;
+Timer alienSpawn;
 GamePanel (){
 	frameDraw = new Timer(1000/60, this);
 	frameDraw.start();
@@ -37,6 +38,13 @@ gameInstructions =  new Font("Arial", Font.PLAIN, 48);
  
 }
 int currentState = MENU;
+
+void startGame() {
+    alienSpawn = new Timer(1000 , objectManager);
+    alienSpawn.start();
+}
+
+
 void updateMenuState() {}
 void updateGameState() {
 	objectManager.update();
@@ -116,10 +124,19 @@ public void keyPressed(KeyEvent arg0) {
 	// TODO Auto-generated method stub
 	if(arg0.getKeyCode()==KeyEvent.VK_ENTER) {
 		if(currentState == END) {
+			alienSpawn.stop();
 			currentState = MENU;}
 		else {
 			currentState++;
 		}
+		if(currentState == GAME) {
+			startGame();
+		}
+	}
+	if(arg0.getKeyCode()==KeyEvent.VK_SPACE) {
+		if(currentState == GAME) {
+		objectManager.addProjectile(rocketship.getProjectile());	
+	}
 	}
 	if(arg0.getKeyCode()==KeyEvent.VK_UP) {
 		System.out.println("UP");

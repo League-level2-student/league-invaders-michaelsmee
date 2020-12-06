@@ -6,10 +6,9 @@ import java.util.Random;
 
 public class ObjectManager implements ActionListener{
 Rocketship rocket;
-Projectile projectile; 
 Random rand = new Random();
 ArrayList<Alien> aliens = new ArrayList<Alien>();
-
+ArrayList<Projectile> projectiles = new ArrayList<Projectile>();
 ObjectManager(Rocketship rocket){
 	this.rocket=rocket;
 }
@@ -18,7 +17,9 @@ ObjectManager(Rocketship rocket){
 void addAlien() {
 	aliens.add(new Alien(rand.nextInt(LeagueInvaders.WIDTH),0,50,50));
 }
-
+void addProjectile(Projectile projectile) {
+	projectiles.add(projectile);
+}
 
 void update() {
 	for(int i = 0; i<aliens.size(); i++) {
