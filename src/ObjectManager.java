@@ -24,6 +24,15 @@ void addProjectile(Projectile projectile) {
 void update() {
 	for(int i = 0; i<aliens.size(); i++) {
 		aliens.get(i).update();
+		if(aliens.get(i).y>LeagueInvaders.HEIGHT) {
+			aliens.get(i).active=false;
+		}
+	}
+	for(int i = 0; i<projectiles.size(); i++) {
+		projectiles.get(i).update();
+		if(projectiles.get(i).y<0) {
+			projectiles.get(i).active=false;
+		}
 	}
 }
 
