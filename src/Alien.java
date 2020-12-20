@@ -13,7 +13,7 @@ public class Alien extends GameObject {
 		// TODO Auto-generated constructor stub
 	this.speed =1;
 	if (needImage) {
-	    loadImage ("rocket.png");
+	    loadImage ("alien.png");
 	} 
 	}    
   
