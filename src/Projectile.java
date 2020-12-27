@@ -19,6 +19,7 @@ public class Projectile extends GameObject {
 	}
 	void update() {
 		y-=10;
+	    super.update();
 	}
 	void draw(Graphics g) {
 		g.setColor(Color.YELLOW);

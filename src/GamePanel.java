@@ -48,6 +48,9 @@ void startGame() {
 void updateMenuState() {}
 void updateGameState() {
 	objectManager.update();
+	if(rocketship.active==false) {
+		currentState=END;
+	}
 }
 void updateEndState() {}
 void drawMenuState(Graphics g) {
