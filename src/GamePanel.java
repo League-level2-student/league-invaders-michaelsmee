@@ -125,6 +125,7 @@ public void actionPerformed(ActionEvent e) {
 @Override
 public void keyPressed(KeyEvent arg0) {
 	// TODO Auto-generated method stub
+	System.out.println("Before " + currentState);
 	if(arg0.getKeyCode()==KeyEvent.VK_ENTER) {
 		if(currentState == END) {
 			alienSpawn.stop();
@@ -136,6 +137,7 @@ public void keyPressed(KeyEvent arg0) {
 			startGame();
 		}
 	}
+	System.out.println("After " + currentState);
 	if(arg0.getKeyCode()==KeyEvent.VK_SPACE) {
 		if(currentState == GAME) {
 		objectManager.addProjectile(rocketship.getProjectile());	

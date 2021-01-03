@@ -37,6 +37,9 @@ public class ObjectManager implements ActionListener {
 	}
 
 	void update() {
+		
+		rocket.update();
+		
 		if (rocket.active == true) {
 
 			for (int i = 0; i < aliens.size(); i++) {
