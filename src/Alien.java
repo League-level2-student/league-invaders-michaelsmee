@@ -25,8 +25,6 @@ void update()	 {
 
 
 void draw(Graphics g) {
-	g.setColor(Color.YELLOW);
-	g.fillRect(x, y, width, height);
 
 if (gotImage) {
 	g.drawImage(image, x, y, width, height, null);

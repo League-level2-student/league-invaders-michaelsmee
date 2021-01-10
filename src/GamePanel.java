@@ -8,6 +8,7 @@ import java.awt.event.KeyListener;
 import java.awt.image.BufferedImage;
 
 import javax.imageio.ImageIO;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.Timer;
 
@@ -32,9 +33,9 @@ GamePanel (){
 	    loadImage ("space.png");
 	}
 	
-titleFont =  new Font("Arial", Font.PLAIN, 48);
-gameFont =  new Font("Arial", Font.PLAIN, 48);
-gameInstructions =  new Font("Arial", Font.PLAIN, 48);
+titleFont =  new Font("Arial", Font.PLAIN, 30);
+gameFont =  new Font("Arial", Font.PLAIN, 30);
+gameInstructions =  new Font("Arial", Font.PLAIN, 30);
  
 }
 int currentState = MENU;
@@ -59,8 +60,8 @@ void drawMenuState(Graphics g) {
 	g.setColor(Color.YELLOW);
 	g.setFont(titleFont);
 	g.drawString("Welcome", 150, 250);
-	g.drawString("Press Enter to start", 20, 300);
-	g.drawString("Press space for info", 20, 500);
+	g.drawString("Press Enter to start", 50, 300);
+	g.drawString("Press space for info", 50, 500);
 }
 void drawGameState(Graphics g) {
 	if (gotImage) {
@@ -93,8 +94,8 @@ void drawEndState(Graphics g) {
 	g.setColor(Color.YELLOW);
 	g.setFont(titleFont);
 	g.drawString("Game Over", 150, 250);
-	g.drawString("You kill  many enimies", 20, 300);
-	g.drawString("Press space for info", 20, 500);
+	g.drawString("You kill "+ objectManager.getScore() +" many enimies", 50, 300);
+	g.drawString("Press ENTER to restart", 50, 400);
 }
 @Override	
 public void paintComponent (Graphics g) {
@@ -129,6 +130,8 @@ public void keyPressed(KeyEvent arg0) {
 	if(arg0.getKeyCode()==KeyEvent.VK_ENTER) {
 		if(currentState == END) {
 			alienSpawn.stop();
+			rocketship = new Rocketship(250, 750, 50, 50);
+			objectManager = new ObjectManager(rocketship);
 			currentState = MENU;}
 		else {
 			currentState++;
@@ -138,6 +141,11 @@ public void keyPressed(KeyEvent arg0) {
 		}
 	}
 	System.out.println("After " + currentState);
+	
+	if(arg0.getKeyCode()==KeyEvent.VK_SPACE && currentState == MENU) {
+		JOptionPane.showMessageDialog(null, "Use WASD to move and press space to fire");
+	}
+	
 	if(arg0.getKeyCode()==KeyEvent.VK_SPACE) {
 		if(currentState == GAME) {
 		objectManager.addProjectile(rocketship.getProjectile());	
