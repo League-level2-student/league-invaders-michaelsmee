@@ -56,7 +56,6 @@ public class ObjectManager implements ActionListener {
 				projectiles.get(i).update();
 				if (projectiles.get(i).y < 0) {
 					projectiles.get(i).active = false;
-					score+=1;
 				}
 			}
 			checkCollision();
@@ -87,6 +86,7 @@ public class ObjectManager implements ActionListener {
 			if (projectiles.get(i2).collisionBox.intersects(aliens.get(i).collisionBox) == true) {
 				projectiles.get(i2).active = false;
 				aliens.get(i).active = false;
+				score+=1;
 				}
 		}
 		}
